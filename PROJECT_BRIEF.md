@@ -5,7 +5,7 @@
 This project uses NOAA's HURDAT2 best-track database to build a model that
 forecasts a tropical cyclone's future position and intensity from its current
 track history. As a Sanibel Island resident who lived through Hurricane Ian,
-I use Ian as a case study — training on all prior storms, then evaluating how
+I use Ian as a case study. I start by training on all prior storms, then evaluating how
 well the model would have predicted Ian's rapid intensification and landfall
 track compared to the official NHC forecast issued at the time.
 
