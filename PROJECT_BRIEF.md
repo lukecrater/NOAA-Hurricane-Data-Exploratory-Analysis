@@ -1,10 +1,10 @@
-# Hurricane Track & Intensity Forecasting — A Post-Ian Analysis
+# Hurricane Track & Intensity Forecasting - A Post-Ian Analysis
 
 ## Brief
 
 This project uses NOAA's HURDAT2 best-track database to build a model that
 forecasts a tropical cyclone's future position and intensity from its current
-track history. As a Sanibel Island resident who lived through Hurricane Ian,
+track history. As a lifelong Sanibel Island resident who lived through Hurricane Ian,
 I use Ian as a case study. I start by training on all prior storms, then evaluating how
 well the model would have predicted Ian's rapid intensification and landfall
 track compared to the official NHC forecast issued at the time.
@@ -15,7 +15,7 @@ track compared to the official NHC forecast issued at the time.
 - Format spec: `data/raw/hurdat2-format-atl-1851-2021.pdf`
 - Parsed, tidy version: `data/processed/hurdat2_clean.csv` (built by `src/parse_hurdat2.py`)
 
-HURDAT2 is the one dataset on the NHC data page worth pulling directly — it's
+HURDAT2 is the one dataset on the NHC data page worth pulling directly; it's
 clean six-hourly position/wind/pressure data for every storm on record. The
 rest of the NHC data page (PDFs, scanned advisory wallets, text bulletins)
 isn't structured enough to model against and was skipped.
@@ -25,7 +25,7 @@ isn't structured enough to model against and was skipped.
 1. **Data ingestion** — parse HURDAT2's fixed-width/CSV-hybrid format into a
    clean DataFrame (storm ID, timestamp, lat/lon, max wind, pressure, status).
    → `src/parse_hurdat2.py`
-2. **EDA** — seasonal patterns, track density by region, intensity
+2. **EDA** - seasonal patterns, track density by region, intensity
    distributions, historical Gulf/SW Florida landfalls. → `src/eda.py`
 3. **Feature engineering** — lag features (position/speed/heading over the
    prior 6–24hrs), rate of intensification, distance to warm water.
@@ -34,7 +34,7 @@ isn't structured enough to model against and was skipped.
 5. **Case study: Hurricane Ian** — hold Ian out of training, run the model
    against it, and compare predicted track/intensity to the actual NHC
    forecast track at matching lead times. This is the centerpiece: "built a
-   model and benchmarked it against NHC's own forecast," not just "built a
+   model and benchmarked it against NHC's own forecast," as opposed to just "built a
    model."
 6. **(Stretch) Impact layer** — overlay Ian's actual path against Lee County
    elevation/flood-zone data to visualize why Sanibel took the hit it did.
@@ -56,7 +56,7 @@ isn't structured enough to model against and was skipped.
   of NHC's forecast skill comes from atmospheric model guidance and human forecaster synthesis, not just
   persistence/climatology-style signal. See `outputs/figures/06_ian_model_vs_nhc.png`.
 - **Ian's rapid intensification** (+110kt in the 24h before landfall) is the single hardest event for the
-  model to anticipate — intensity error on Ian is proportionally worse than the general holdout error,
+  model to anticipate; intensity error on Ian is proportionally worse than the general holdout error,
   consistent with RI events being notoriously hard to forecast without ocean heat content data.
 - **Impact layer**: NHC's post-storm surveys found 9-15ft of storm-surge inundation (above ground level)
   across Sanibel/Fort Myers Beach — on barrier islands that mostly sit 0-3ft above sea level. Storm surge
